@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from "react";
 
-function App() {
+// Styling
+import "./App.css";
+
+// Components
+import { DarkModeContext } from "./Context/DarkModeProvider";
+import ItemList from "./Components/ItemList";
+
+const App = () => {
+  // TODO
+  // 1. Add to do list items (useEffect, useState)
+  // 2. Remove to do list items
+  // 3. Mark complete
+  // 4. Dark mode (useContext)
+  // 5. Create a backend with user authentication
+  // 6. How to implement useRef?
+
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkMode ? `App App-bg-dark` : `App App-bg-light`}>
+      <h1 className={darkMode ? `title-dark` : `title-light`}>To Do App</h1>
+      <button onClick={toggleDarkMode}>Change Light Mode</button>
+      <ItemList />
     </div>
   );
-}
+};
 
 export default App;
