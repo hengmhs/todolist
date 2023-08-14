@@ -53,13 +53,27 @@ const ItemList = () => {
     });
   };
 
-  const handleCheck = (e, id) => {
+  const handleCheck = (id) => {
+    // create a copy of items to modify
     const updatedItems = [...items];
     const selectedIndex = updatedItems.findIndex((item) => {
       return item.id === id;
     });
     updatedItems[selectedIndex].isCompleted =
       !updatedItems[selectedIndex].isCompleted;
+    setItems(updatedItems);
+  };
+
+  const handleDelete = (id) => {
+    let updatedItems = [...items];
+    const removeById = (item, index, arr) => {
+      if (item.id === id) {
+        return false;
+      }
+      return true;
+    };
+    // filter method does not mutate original arr but returns a new arr
+    updatedItems = updatedItems.filter(removeById);
     setItems(updatedItems);
   };
 
@@ -72,8 +86,11 @@ const ItemList = () => {
             itemInfo={itemInfo}
             index={index + 1}
             key={itemInfo.content + index}
-            handleCheck={(e) => {
-              handleCheck(e, itemInfo.id);
+            handleCheck={() => {
+              handleCheck(itemInfo.id);
+            }}
+            handleDelete={() => {
+              handleDelete(itemInfo.id);
             }}
           />
         );

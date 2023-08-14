@@ -9,13 +9,15 @@ import ItemList from "./Components/ItemList";
 
 const App = () => {
   // TODO
-  // 1. Add to do list items (useEffect, useState) [x]
-  // 2. Remove to do list items
-  // 3. Mark complete
-  // 4. Dark mode (useContext) [x]
-  // 5. Create a backend with user authentication
+  // 1. Create to do list items (useEffect, useState) [x]
+  // 2. Update item
+  // 3. Remove to do list items
+  // 3a. Pop up box to confirm removal
+  // 4. Mark complete [x]
+  // 5. Dark mode (useContext) [x]
   // 6. Implement useRef for new item [x]
-  // 7. Add localStorage
+  // 7. Add localStorage [x]
+  // 8. Create a backend with user authentication
 
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
