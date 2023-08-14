@@ -15,6 +15,7 @@ const App = () => {
   // 4. Dark mode (useContext) [x]
   // 5. Create a backend with user authentication
   // 6. Implement useRef for new item [x]
+  // 7. Add localStorage
 
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (

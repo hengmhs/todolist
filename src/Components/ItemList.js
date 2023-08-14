@@ -1,4 +1,4 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 
 // Context
 import { DarkModeContext } from "../Context/DarkModeProvider";
@@ -9,10 +9,28 @@ import Item from "./Item";
 const ItemList = () => {
   const { darkMode } = useContext(DarkModeContext);
   const newItem = useRef("");
-  const [items, setItems] = useState([
-    { id: 1, content: "Laundry", isCompleted: false },
-    { id: 2, content: "Revise JavaScript", isCompleted: true },
-  ]);
+  const [items, setItems] = useState(() => {
+    // if the items is empty, it will return null
+    return JSON.parse(localStorage.getItem("items")) || [];
+  });
+  const [currentId, setCurrentId] = useState(() => {
+    return JSON.parse(localStorage.getItem("currentId") || 0);
+  });
+
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem("items"));
+    if (storedItems) {
+      setItems(storedItems);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
+  useEffect(() => {
+    localStorage.setItem("currentId", JSON.stringify(currentId));
+  }, [currentId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,8 +38,8 @@ const ItemList = () => {
     // re-render every time the user enters an input
     const addedItem = {
       content: newItem.current.value,
-      completed: false,
-      id: items[items.length - 1].id + 1,
+      isCompleted: false,
+      id: currentId,
     };
     // use the functional syntax to prevent issues when
     // setting items multiple times
@@ -30,6 +48,9 @@ const ItemList = () => {
       return [...items, addedItem];
     });
     newItem.current.value = "";
+    setCurrentId((currentId) => {
+      return currentId + 1;
+    });
   };
 
   const handleCheck = (e, id) => {
