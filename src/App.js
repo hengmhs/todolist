@@ -5,13 +5,13 @@ import "./App.css";
 
 // Components
 import { DarkModeContext } from "./Context/DarkModeProvider";
-import ItemList from "./Components/ItemList";
+import ItemList from "./Components/ItemList/ItemList";
 
 const App = () => {
   // TODO
   // 1. Create to do list items (useEffect, useState) [x]
   // 2. Update item
-  // 3. Remove to do list items
+  // 3. Remove to do list items [x]
   // 3a. Pop up box to confirm removal
   // 4. Mark complete [x]
   // 5. Dark mode (useContext) [x]

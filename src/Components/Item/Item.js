@@ -1,11 +1,11 @@
 import { useContext } from "react";
 
 // Styling
-import "../App.css";
-import "./ItemList.css";
+import "../../App.css";
+import "./Item.css";
 
 // Context
-import { DarkModeContext } from "../Context/DarkModeProvider";
+import { DarkModeContext } from "../../Context/DarkModeProvider";
 
 const Item = ({ itemInfo, index, handleCheck, handleDelete }) => {
   const { darkMode } = useContext(DarkModeContext);

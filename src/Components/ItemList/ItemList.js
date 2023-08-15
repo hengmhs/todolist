@@ -1,10 +1,13 @@
 import { useState, useEffect, useContext, useRef } from "react";
 
 // Context
-import { DarkModeContext } from "../Context/DarkModeProvider";
+import { DarkModeContext } from "../../Context/DarkModeProvider";
 
 // Components
-import Item from "./Item";
+import Item from "../Item/Item";
+
+// Styling
+import "./ItemList.css";
 
 const ItemList = () => {
   const { darkMode } = useContext(DarkModeContext);
