@@ -80,6 +80,15 @@ const ItemList = () => {
     setItems(updatedItems);
   };
 
+  const handleUpdate = (editedValue, id) => {
+    const updatedItems = [...items];
+    const selectedIndex = updatedItems.findIndex((item) => {
+      return item.id === id;
+    });
+    updatedItems[selectedIndex].content = editedValue;
+    setItems(updatedItems);
+  };
+
   return (
     <div>
       <h2 className={darkMode ? `title-dark` : `title-light`}>Items: </h2>
@@ -94,6 +103,9 @@ const ItemList = () => {
             }}
             handleDelete={() => {
               handleDelete(itemInfo.id);
+            }}
+            handleUpdate={(e) => {
+              handleUpdate(e, itemInfo.id);
             }}
           />
         );
