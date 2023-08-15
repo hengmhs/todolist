@@ -14,6 +14,11 @@ const Item = ({ itemInfo, index, handleCheck, handleDelete, handleUpdate }) => {
 
   return (
     <div className={darkMode ? `text-dark` : `text-light`}>
+      <input
+        type="checkbox"
+        checked={itemInfo.isCompleted}
+        onChange={handleCheck}
+      />
       <span>{index}. </span>
       {isEditable ? (
         <span>
@@ -35,7 +40,8 @@ const Item = ({ itemInfo, index, handleCheck, handleDelete, handleUpdate }) => {
         </span>
       ) : (
         <span>
-          <span> {itemInfo.content} - </span>
+          <span> {itemInfo.content}</span>
+          <span> - </span>
           <span
             className="edit-btn"
             onClick={() => {
@@ -49,11 +55,6 @@ const Item = ({ itemInfo, index, handleCheck, handleDelete, handleUpdate }) => {
       <span className="delete-btn" onClick={handleDelete}>
         🗑️
       </span>
-      <input
-        type="checkbox"
-        checked={itemInfo.isCompleted}
-        onChange={handleCheck}
-      />
     </div>
   );
 };
